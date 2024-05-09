@@ -5,236 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Delivery Page</title>
   <style>
-    const deliveryBoy = document.querySelector("[data-delivery-boy]");
+    /* Your CSS styles here */
+    .delivery-content { margin-bottom: 40px; }
 
-let deliveryBoyMove = -80;
-let lastScrollPos = 0;
-
-window.addEventListener("scroll", function () {
-
-  let deliveryBoyTopPos = deliveryBoy.getBoundingClientRect().top;
-
-  if (deliveryBoyTopPos < 500 && deliveryBoyTopPos > -250) {
-    let activeScrollPos = window.scrollY;
-
-    if (lastScrollPos < activeScrollPos) {
-      deliveryBoyMove += 1;
-    } else {
-      deliveryBoyMove -= 1;
+    .delivery .section-title {
+      max-width: 17ch;
     }
 
-    lastScrollPos = activeScrollPos;
-    deliveryBoy.style.transform = `translateX(${deliveryBoyMove}px)`;
-  }
+    .delivery-banner {
+      position: relative;
+    }
 
-});
+    .delivery-img {
+        position: absolute;
+        bottom: -370px;
+        left: -10px;
+        width: 700px;
+        animation: running-cycle 5s linear infinite;
+    }
 
-
-
-.delivery-content { margin-block-end: 40px; }
-
-.delivery .section-title {
-  max-width: 17ch;
-  line-height: 1.6;
-  letter-spacing: -2px;
-}
-
-.delivery .section-text { margin-block: 15px 25px; }
-
-.delivery-banner {
-  position: relative;
-  aspect-ratio: 1 / 0.86;
-}
-
-.delivery-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(-80px);
-  transition: var(--transition-2);
-}
-
-
-.footer { overflow: hidden; }
-
-.footer-top {
-  position: relative;
-  padding-block: 120px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
-  border-block-end: 2px solid var(--independence_30);
-}
-
-.footer-top::after {
-  content: url(../images/delivery-boy.svg);
-  position: absolute;
-  bottom: -11px;
-  left: -160px;
-  width: 160px;
-  animation: running-cycle 20s linear infinite;
-}
-
-@keyframes running-cycle {
-  0% { left: -160px; }
-  100% { left: 100%; }
-}
-
-.footer-top .container {
-  display: grid;
-  gap: 30px;
-}
-
-.footer .logo {
-  color: var(--rich-black-fogra-29);
-  font-size: 3.2rem;
-}
-
-.footer-text { margin-block: 15px 25px; }
-
-.social-list {
-  display: flex;
-  gap: 5px;
-}
-
-.social-link {
-  background-color: var(--dark-orange);
-  color: var(--white);
-  font-size: 1.5rem;
-  padding: 10px;
-  transition: var(--transition-1);
-}
-
-.social-link:is(:hover, :focus) { background-color: var(--rich-black-fogra-29); }
-
-.footer-list-title {
-  position: relative;
-  max-width: max-content;
-  color: var(--rich-black-fogra-29);
-  font-family: var(--ff-rubik);
-  font-size: var(--fs-3);
-  font-weight: var(--fw-600);
-  letter-spacing: -1px;
-  margin-block-end: 20px;
-}
-
-.footer-list-title::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: calc(100% + 15px);
-  background-color: var(--deep-saffron);
-  width: 40px;
-  height: 4px;
-  border-inline-end: 5px solid var(--deep-saffron);
-  box-shadow: inset -5px 0 0 var(--white);
-}
-
-.footer-list > li:not(:last-child) { margin-block-end: 15px; }
-
-.footer-list address { max-width: 20ch; }
-
-.footer-form {
-  background-color: var(--white);
-  padding: 30px;
-  border: 1px solid var(--cultured);
-  box-shadow: var(--shadow-2);
-}
-
-.input-wrapper {
-  display: grid;
-  gap: 10px;
-  margin-block-end: 10px;
-}
-
-.input-field {
-  color: var(--spanish-gray);
-  font-size: var(--fs-4);
-  border: 1px solid var(--cultured);
-  padding: 8px 12px;
-}
-
-.input-field::placeholder { color: var(--spanish-gray); }
-
-.input-field::-webkit-calendar-picker-indicator { opacity: 0.5; }
-
-textarea.input-field {
-  min-height: 50px;
-  max-height: 150px;
-  height: 100px;
-  resize: vertical;
-  margin-block-end: 10px;
-}
-
-.footer-form .btn {
-  font-size: var(--fs-15);
-  --height: 40px;
-  --padding-inline: 25px;
-}
-
-.footer-form .btn:is(:hover, :focus) { background-color: var(--rich-black-fogra-29); }
-
-.footer-bottom {
-  padding-block: 20px;
-  text-align: center;
-}
-
-.copyright-link { display: inline-block; }
-
-.copyright-link:is(:hover, :focus) { text-decoration: underline; }
-
-
-
+    @keyframes running-cycle {
+      0% { left: -160px; }
+      100% { left: 100%; }
+    }
   </style>
 </head>
 <body>
 
   <section class="section section-divider gray delivery">
-    <div class="container">
-      <div class="delivery-content">
-        <h2 class="h2 section-title">
-          A Moments Of Delivered On <span class="span">Right Time</span> & Place
-        </h2>
-        <p class="section-text">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium officia repudiandae dolore exercitationem nihil cumque nulla aliquam! Dolorum ab minus veniam doloremque beatae impedit culpa earum sequi debitis, aut id.
-        </p>
-        <button class="btn btn-hover">Order Now</button>
-      </div>
       <figure class="delivery-banner">
         <img src="delivery-banner-bg.png" width="700" height="602" loading="lazy" alt="clouds" class="w-100">
-        <img src="delivery-boy.svg" width="1000" height="880" loading="lazy" alt="delivery boy" class="w-100 delivery-img" data-delivery-boy>
+        <img src="delivery-boy.svg" width="1000" height="880" loading="lazy" alt="delivery boy" class="delivery-img" data-delivery-boy>
       </figure>
-    </div>
   </section>
-
-  <footer class="footer">
-    <div class="footer-top" style="background-image: url('./assets/images/footer-illustration.png')">
-    </div>
-  </footer>
-
-  <script>
-    const deliveryBoy = document.querySelector("[data-delivery-boy]");
-    let deliveryBoyMove = -80;
-    let lastScrollPos = 0;
-
-    window.addEventListener("scroll", function () {
-      let deliveryBoyTopPos = deliveryBoy.getBoundingClientRect().top;
-
-      if (deliveryBoyTopPos < 500 && deliveryBoyTopPos > -250) {
-        let activeScrollPos = window.scrollY;
-
-        if (lastScrollPos < activeScrollPos) {
-          deliveryBoyMove += 1;
-        } else {
-          deliveryBoyMove -= 1;
-        }
-
-        lastScrollPos = activeScrollPos;
-        deliveryBoy.style.transform = `translateX(${deliveryBoyMove}px)`;
-      }
-    });
-  </script>
 
 </body>
 </html>
